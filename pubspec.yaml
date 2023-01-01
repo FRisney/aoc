@@ -1,0 +1,6 @@
+name: frisney_aoc
+description: My attempt on Advent of Code challenges using Dart and TDD
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.18.1 <3.0.0'
