@@ -23,6 +23,10 @@ extension ElfListExtension on List<Elf> {
     }
     return winner;
   }
+  List<Elf> get getThreeElfsWithMostCalories {
+    this.sort((a, b) => a.totalCalories.compareTo(b.totalCalories));
+    return this.reversed.take(3).toList();
+  }
 }
 
 extension StringListElfExtension on List<String> {
