@@ -33,4 +33,9 @@ void main() {
     final elf = elfs.getElfWithMostCalories;
     expect(elf.totalCalories, 24);
   });
+
+  test('Should get the three elfs that carries tbe most calories', () {
+    final elf = elfs.getThreeElfsWithMostCalories;
+    expect(elf.map<int>((e)=>e.totalCalories), [24,11,10]);
+  });
 }
