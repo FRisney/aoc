@@ -20,11 +20,11 @@ abstract class Weapon implements Comparable {
   bool operator ==(Object counter) {
     return counter is Weapon && counter.score == score;
   }
-    
-    @override
-    String toString() {
+
+  @override
+  String toString() {
     return runtimeType.toString();
-     }
+  }
 }
 
 class Paper extends Weapon {
