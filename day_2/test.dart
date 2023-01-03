@@ -22,9 +22,9 @@ void main() {
     final pxr = Weapon.build('B X');
     final sxs = Weapon.build('C Z');
 
-    expect(rxp, [Rock(), Paper()]);
-    expect(pxr, [Paper(), Rock()]);
-    expect(sxs, [Scisors(), Scisors()]);
+    expect(rxp, [Rock(), Scisors()]);
+    expect(pxr, [Paper(), Paper()]);
+    expect(sxs, [Scisors(), Rock()]);
   });
 
   test('Given the guide, should get correct total score', () {
