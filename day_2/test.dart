@@ -22,8 +22,8 @@ void main() {
     final pxr = Weapon.build('B X');
     final sxs = Weapon.build('C Z');
 
-    expect(rxp, [Rock(), Scisors()]);
-    expect(pxr, [Paper(), Paper()]);
+    expect(rxp, [Rock(), Rock()]);
+    expect(pxr, [Paper(), Rock()]);
     expect(sxs, [Scisors(), Rock()]);
   });
 
@@ -34,6 +34,6 @@ void main() {
       game.play(weps[1], weps[0]);
     }
     print(game.rounds);
-    expect(game.totalScore, 15);
+    expect(game.totalScore, 12);
   });
 }
