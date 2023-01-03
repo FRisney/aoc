@@ -1,16 +1,23 @@
 abstract class Weapon implements Comparable {
-  const Weapon({required this.aliases, required this.score});
-  final List<String> aliases;
+  const Weapon({required this.alias, required this.score});
+  final String alias;
   final int score;
 
   static List<Weapon> build(String guideSegment) {
     final chosen = <Weapon>[];
     final pair = guideSegment.split(' ');
     final weapons = [Rock(), Paper(), Scisors()];
+    final conditions = {'Y': 0, 'X': -1, 'Z': 1};
     for (final alias in pair) {
       for (final weapon in weapons) {
-        if (weapon.aliases.contains(alias)) {
-          chosen.add(weapon);
+        if (chosen.isEmpty) {
+          if (weapon.alias == alias) {
+            chosen.add(weapon);
+          }
+        } else {
+          if (weapon.compareTo(chosen[0]) == conditions[pair[1]]) {
+            chosen.add(weapon);
+          }
         }
       }
     }
@@ -28,7 +35,7 @@ abstract class Weapon implements Comparable {
 }
 
 class Paper extends Weapon {
-  Paper() : super(aliases: const ['B', 'Y'], score: 2);
+  Paper() : super(alias: 'B', score: 2);
 
   @override
   int compareTo(other) {
@@ -44,7 +51,7 @@ class Paper extends Weapon {
 }
 
 class Scisors extends Weapon {
-  Scisors() : super(aliases: const ['C', 'Z'], score: 3);
+  Scisors() : super(alias: 'C', score: 3);
 
   @override
   int compareTo(other) {
@@ -60,7 +67,7 @@ class Scisors extends Weapon {
 }
 
 class Rock extends Weapon {
-  Rock() : super(aliases: const ['A', 'X'], score: 1);
+  Rock() : super(alias: 'A', score: 1);
 
   @override
   int compareTo(other) {

@@ -33,7 +33,6 @@ void main() {
       final weps = Weapon.build(r);
       game.play(weps[1], weps[0]);
     }
-    print(game.rounds);
     expect(game.totalScore, 12);
   });
 }
