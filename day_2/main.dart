@@ -10,5 +10,6 @@ void main() {
       final weps = Weapon.build(round);
       game.play(weps[1],weps[0]);
   }
-  print(game.totalScore);
+  print('Following the Elf\'s instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide?');
+  print('\t${game.totalScore}');
 }
