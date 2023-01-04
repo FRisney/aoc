@@ -16,25 +16,13 @@ void main() {
   test(
       'Given a number of rucksacks, calculate the total sum of duplicate items priorities',
       () {
-    final priorities = [
-      RuckSack('vJrwpWtwJgWrhcsFMMfFFhFp').calculatePriority('p'),
-      RuckSack('jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL').calculatePriority('L'),
-      RuckSack('PmmdzqPrVvPwwTWBwg').calculatePriority('P'),
-      RuckSack('wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn').calculatePriority('v'),
-      RuckSack('ttgJtRGJQctTZtZT').calculatePriority('t'),
-      RuckSack('CrZsJsPPZsGzwwsLwLmpwMDw').calculatePriority('s'),
-    ];
-    expect(
-      [
-        priorities[0],
-        priorities[1],
-        priorities[2],
-        priorities[3],
-        priorities[4],
-        priorities[5]
-      ],
-      [16, 38, 42, 22, 20, 19],
-    );
+    final sum = RuckSack('ttgJtRGJQctTZtZT').getDuplicatePriority() +
+        RuckSack('wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn').getDuplicatePriority() +
+        RuckSack('jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL').getDuplicatePriority() +
+        RuckSack('vJrwpWtwJgWrhcsFMMfFFhFp').getDuplicatePriority() +
+        RuckSack('CrZsJsPPZsGzwwsLwLmpwMDw').getDuplicatePriority() +
+        RuckSack('PmmdzqPrVvPwwTWBwg').getDuplicatePriority();
+    expect(sum, 157);
   });
 }
 
