@@ -1,4 +1,5 @@
 import 'package:test/test.dart';
+import 'src/rucksack.dart';
 
 void main() {
   test('Given a rucksack, should get the duplicate item', () {
@@ -24,16 +25,4 @@ void main() {
         RuckSack('PmmdzqPrVvPwwTWBwg').getDuplicatePriority();
     expect(sum, 157);
   });
-}
-
-class RuckSack {
-  RuckSack(String items) {}
-
-  List<String> findDuplicates() {
-    return ['p'];
-  }
-
-  int calculatePriority(String item) {
-    return 16;
-  }
 }
