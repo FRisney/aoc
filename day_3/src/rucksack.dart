@@ -9,6 +9,17 @@ class RuckSack {
   late final List<int> left;
   late final List<int> right;
 
+  Set<int> get items => (left + right).toSet();
+
+  List<int> findBadge(List<int> other) {
+    final items = this.items.toList();
+    print(items);
+    print(other);
+    items.retainWhere((item) => !other.contains(item));
+    print(items);
+    return items;
+  }
+
   List<String> findDuplicates() {
     final runes = left.toList();
     runes.retainWhere(right.contains);

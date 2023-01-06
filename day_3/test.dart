@@ -1,5 +1,6 @@
 import 'package:test/test.dart';
 import 'src/rucksack.dart';
+import 'src/group.dart';
 
 void main() {
   test('Given a rucksack, should get the duplicate item', () {
@@ -24,5 +25,15 @@ void main() {
         RuckSack('CrZsJsPPZsGzwwsLwLmpwMDw').getDuplicatePriority() +
         RuckSack('PmmdzqPrVvPwwTWBwg').getDuplicatePriority();
     expect(sum, 157);
+  });
+
+  test('Given a group of rucksacks, get the unique item aomng them', () {
+    final group = Group([
+      'vJrwpWtwJgWrhcsFMMfFFhFp',
+      'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+      'PmmdzqPrVvPwwTWBwg',
+    ]);
+    final badge = group.findBadge();
+    expect(badge,'r');
   });
 }
