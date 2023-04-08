@@ -11,12 +11,8 @@ class RuckSack {
 
   Set<int> get items => (left + right).toSet();
 
-  List<int> findBadge(List<int> other) {
-    final items = this.items.toList();
-    print(items);
-    print(other);
-    items.retainWhere((item) => !other.contains(item));
-    print(items);
+  Set<int> findBadge(Set<int> other) {
+    final items = this.items.intersection(other);
     return items;
   }
 
@@ -26,7 +22,7 @@ class RuckSack {
     return runes.map(String.fromCharCode).toList();
   }
 
-  int calculatePriority(String item) {
+  static int calculatePriority(String item) {
     if (item.length > 1) throw 'Not a character';
     var rune = item.runes.first;
     rune -= (rune > 96) ? 96 : 38;
@@ -35,5 +31,19 @@ class RuckSack {
 
   int getDuplicatePriority() {
     return calculatePriority(findDuplicates().first);
+  }
+}
+
+extension RuckSackTransformerExtension on List<String> {
+  List<RuckSack> toRuckSacks() {
+    final ret = <RuckSack>[];
+    this.forEach(ret.addRucksackFromString);
+    return ret;
+  }
+}
+
+extension RuckSackBuilderExtension on List<RuckSack> {
+  void addRucksackFromString(String sack) {
+    this.add(RuckSack(sack));
   }
 }

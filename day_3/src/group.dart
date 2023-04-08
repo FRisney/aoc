@@ -1,19 +1,23 @@
 import 'rucksack.dart';
 
 class Group {
-  Group(List<String> rucksacks) {
-    this.rucksacks = rucksacks.map(RuckSack.new).toList();
+  Group(List<RuckSack> rucksacks) {
+    this.rucksacks = rucksacks;
   }
 
   late List<RuckSack> rucksacks;
 
-  String? findBadge() {
-    rucksacks[0].findBadge(
-      rucksacks[1].findBadge(
-        rucksacks[2].items,
-      ),
+  String findBadge() {
+    return String.fromCharCode(
+      rucksacks[0]
+          .findBadge(
+            rucksacks[1].findBadge(
+              rucksacks[2].items,
+            ),
+          )
+          .first,
     );
-    return 'a';
+    /* return 'a'; */
     /* final badges = [ */
     /*     rucksacks[0].findBadge(rucksacks[2]), */
     /*     rucksacks[1].findBadge(rucksacks[0]), */

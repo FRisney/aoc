@@ -27,13 +27,28 @@ void main() {
     expect(sum, 157);
   });
 
+  test('Given a list of strings, build a list of rucksacks using addRucksackFromString extension method', () {
+    final all = <RuckSack>[];
+    final content = [
+      'vJrwpWtwJgWrhcsFMMfFFhFp',
+      'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+      'PmmdzqPrVvPwwTWBwg',
+    ];
+    content.forEach(all.addRucksackFromString);
+    final r = RuckSack(content.first);
+    expect(
+      all.first.items,
+      r.items,
+    );
+  });
+
   test('Given a group of rucksacks, get the unique item aomng them', () {
     final group = Group([
       'vJrwpWtwJgWrhcsFMMfFFhFp',
       'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
       'PmmdzqPrVvPwwTWBwg',
-    ]);
+    ].toRuckSacks());
     final badge = group.findBadge();
-    expect(badge,'r');
+    expect(badge, 'r');
   });
 }
