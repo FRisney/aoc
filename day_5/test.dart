@@ -44,8 +44,8 @@ move 1 from 1 to 2
     expect(crane.instructions, isNot(contains(parser.instructions.first)));
 
     expect(crane.depot.stacks, isNot(containsPair(1, [Runes('Z'),Runes('N')])));
-    expect(parser.depot.stacks, containsPair(2, [Runes('M')]));
+    expect(crane.depot.stacks, containsPair(2, [Runes('C')]));
 
-    expect(crane.getLastRow(), equals('CMZ'));
+    expect(crane.getLastRow(), equals('MCD'));
   });
 }

@@ -16,10 +16,14 @@ class Crane {
 
   void executeInstructions() {
     for (final instruction in this.instructions) {
-      for (int q = 0; q < instruction.quantity; q++) {
-        final taken = depot.stacks[instruction.origin]!.removeLast();
-        depot.stacks[instruction.destiny]!.add(taken);
+      final stack = depot.stacks[instruction.origin]!;
+      final taken = <Runes>[];
+      final initialPosition = stack.length - instruction.quantity;
+      for (int i = initialPosition; i < stack.length; i++) {
+        taken.add(stack[i]);
       }
+      depot.stacks[instruction.destiny]!.addAll(taken);
+      taken.forEach(stack.remove);
     }
     instructions.clear();
   }
