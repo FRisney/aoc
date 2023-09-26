@@ -1,6 +1,12 @@
 import 'dart:collection';
+import 'dart:io';
 
-void main() {}
+void main() {
+    final input = File('day_6/input').readAsStringSync();
+    final index = getMarkerIndex(input.runes);
+    print('How many characters need to be processed before the first start-of-packet marker is detected?');
+    print('\t$index');
+  }
 
 int getMarkerIndex(Runes stream) {
   final queue = ListQueue<int>();
