@@ -3,13 +3,19 @@ import 'dart:io';
 
 void main() {
   final input = File('day_6/input').readAsStringSync();
-  final index = getPacketMarkerIndex(input);
+  final packetIndex = getPacketMarkerIndex(input);
   print(
       'How many characters need to be processed before the first start-of-packet marker is detected?');
-  print('\t$index');
+  print('\t$packetIndex');
+  final messageIndex = getMessageMarkerIndex(input);
+  print(
+      'How many characters need to be processed before the first start-of-packet marker is detected?');
+  print('\t$messageIndex');
 }
 
 int getPacketMarkerIndex(String stream) => getMarkerIndex(stream.runes, 4);
+
+int getMessageMarkerIndex(String stream) => getMarkerIndex(stream.runes, 14);
 
 int getMarkerIndex(Runes stream, int markerLength) {
   final queue = ListQueue<int>();
