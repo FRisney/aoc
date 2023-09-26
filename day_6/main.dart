@@ -17,12 +17,12 @@ int getMarkerIndex(Runes stream, int markerLength) {
   while (iterator.moveNext()) {
     queue.addLast(iterator.current);
 
-    if (iterator.rawIndex < markerLength) {
+    if (iterator.rawIndex < markerLength -1) {
       continue;
     }
 
     if (queue.isItemsUnique()) {
-      return iterator.rawIndex;
+      return iterator.rawIndex + 1;
     }
 
     queue.removeFirst();
