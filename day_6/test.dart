@@ -12,7 +12,7 @@ void main() {
   group('Should get the index of the marker', () {
     for (var markerEntry in markers.entries) {
       test(markerEntry.key, () {
-        final index = getMarkerIndex(markerEntry.key.runes);
+        final index = getPacketMarkerIndex(markerEntry.key);
         expect(index, equals(markerEntry.value));
       });
     }

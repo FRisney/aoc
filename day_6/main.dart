@@ -2,19 +2,22 @@ import 'dart:collection';
 import 'dart:io';
 
 void main() {
-    final input = File('day_6/input').readAsStringSync();
-    final index = getMarkerIndex(input.runes);
-    print('How many characters need to be processed before the first start-of-packet marker is detected?');
-    print('\t$index');
-  }
+  final input = File('day_6/input').readAsStringSync();
+  final index = getPacketMarkerIndex(input);
+  print(
+      'How many characters need to be processed before the first start-of-packet marker is detected?');
+  print('\t$index');
+}
 
-int getMarkerIndex(Runes stream) {
+int getPacketMarkerIndex(String stream) => getMarkerIndex(stream.runes, 4);
+
+int getMarkerIndex(Runes stream, int markerLength) {
   final queue = ListQueue<int>();
   final iterator = stream.iterator;
   while (iterator.moveNext()) {
     queue.addLast(iterator.current);
 
-    if (iterator.rawIndex < 4) {
+    if (iterator.rawIndex < markerLength) {
       continue;
     }
 
@@ -27,13 +30,15 @@ int getMarkerIndex(Runes stream) {
   return -1;
 }
 
-extension CompareFirstFourItems on ListQueue<int> {
+extension CompareItems on ListQueue<int> {
   bool isItemsUnique() {
-    return !(this.elementAt(0) == this.elementAt(1) ||
-        this.elementAt(0) == this.elementAt(2) ||
-        this.elementAt(0) == this.elementAt(3) ||
-        this.elementAt(1) == this.elementAt(2) ||
-        this.elementAt(1) == this.elementAt(3) ||
-        this.elementAt(2) == this.elementAt(3));
+    for (var i = this.length - 1; i > 0; i--) {
+      for (var j = 0; j <= i - 1; j++) {
+        if (this.elementAt(i) == this.elementAt(j)) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 }
